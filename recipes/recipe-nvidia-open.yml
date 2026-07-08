@@ -1,0 +1,39 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: zinc-nvidia-open
+description: Zirconium image, Nvidia open kernel modules (Turing/RTX 20-50 series+).
+base-image: ghcr.io/zirconium-dev/zirconium
+image-version: latest
+
+modules:
+  - type: files
+    files:
+      - source: system
+        destination: /
+
+  - from-file: common-nvidia.yml
+
+  - type: dnf
+    repos:
+      files:
+        - https://negativo17.org/repos/fedora-nvidia.repo
+    install:
+      packages:
+        - dkms
+        - gcc-c++
+        - kernel-devel
+        - nvidia-driver
+        - nvidia-driver-cuda
+        - nvidia-modprobe
+        - nvidia-persistenced
+        - nvidia-settings
+        - libnvidia-fbc
+        - libva-nvidia-driver
+
+  - type: script
+    scripts:
+      - build-nvidia.sh
+    env:
+      NVIDIA_REPO_ID: fedora-nvidia
+
+  - type: signing
