@@ -6,8 +6,8 @@ modules:
       - source: nvidia
         destination: /
 
-  - type: systemd
-    system:
-      disabled:
-        - akmods-keygen@akmods-keygen.service
-        - akmods-keygen.target
+# - type: systemd
+#   system:
+#     disabled:
+#       - akmods-keygen@akmods-keygen.service
+#       - akmods-keygen.target
