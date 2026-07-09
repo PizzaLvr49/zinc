@@ -5,8 +5,8 @@ set -xeuo pipefail
 
 mkdir -p /tmp/nvidia-build
 pushd /tmp/nvidia-build
-dnf download dkms-nvidia --repo="${NVIDIA_REPO_ID}" --arch=noarch --destdir=/tmp/nvidia-build
-rpm -i ./*dkms-nvidia*.rpm --noscripts --nodeps
+dnf download nvidia-dkms --repo="${NVIDIA_REPO_ID}" --arch=noarch --destdir=/tmp/nvidia-build
+rpm -i ./*nvidia-dkms*.rpm --noscripts --nodeps
 popd
 
 NVIDIA_VERSION="$(basename "$(find /usr/src -iname 'nvidia-*' -type d -maxdepth 1)" | cut -d- -f2)"
