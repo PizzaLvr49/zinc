@@ -1,8 +1,8 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: zinc-nvidia-closed
-description: Zirconium image, Nvidia proprietary driver (Maxwell/Pascal/Volta 580 LTS branch).
-base-image: ghcr.io/zirconium-dev/zirconium
+description: Fedora Sway atomic based image, Nvidia proprietary driver (Maxwell/Pascal/Volta 580 LTS branch).
+base-image: quay.io/fedora-ostree-desktops/sway-atomic
 image-version: latest
 
 modules:
